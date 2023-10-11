@@ -1,0 +1,12 @@
+Threshold voltage(Vth):           VTH   / LV9
+Saturation drain voltage(Vdsat):  VDSAT / LV10
+Transconductance(gm):             GMO   / LX7
+Output conductance(gds):          GDSO  / LX8
+Channel current(Id):              CDO   / LX4
+Gate capacitance(CG):             CGGBO / LX18
+
+
+Output resistance(1/gds)
+Intrinsic gain(gm*ro)
+Power efficiency(gm/Id)
+Speed(gm/Cg)
