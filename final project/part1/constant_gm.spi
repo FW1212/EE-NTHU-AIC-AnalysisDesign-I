@@ -1,0 +1,20 @@
+
+
+****Final Project Constant gm Circuit****
+
+.SUBCKT constant_gm Vbias VDD VSS
+
+MstartP1 temp1 VSS   VDD   VDD P_18 w=0.25u l=2u m=1
+MstartP2 temp2 VSS   temp1 VDD P_18 w=0.25u l=2u m=1
+MstartN1 temp2 Vbias VSS   VSS N_18 w=10u   l=2u m=1
+MstartN2 temp3 temp2 VSS   VSS N_18 w=1u    l=2u m=1
+
+McongmP1 Vbias temp3 VDD   VDD P_18 w=0.25u l=2u m=1
+McongmP2 temp3 temp3 VDD   VDD P_18 w=0.25u l=2u m=1
+McongmN1 Vbias Vbias VSS   VSS N_18 w=2u    l=2u m=1
+McongmN2 temp3 Vbias temp4 VSS N_18 w=8u    l=2u m=1
+
+Rcongm temp4 VSS 26000
+
+.ENDS
+

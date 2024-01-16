@@ -1,0 +1,23 @@
+
+
+****Final Project Comparater Circuit****
+
+.SUBCKT cmp VDD VSS Vb Vip Vin Vout
+
+Mcmpb  Vcon12b  Vb       VSS     VSS N_18 w=80u  l=1u   m=1
+
+Mcmp1  Vcon1357 Vip      Vcon12b VSS N_18 W=40u  l=1u   m=1
+Mcmp2  Vcon2468 Vin      Vcon12b VSS N_18 W=40u  l=1u   m=1
+
+Mcmp3  Vcon2468 Vcon1357 VDD     VDD P_18 W=80u  l=1u   m=1
+Mcmp4  Vcon1357 Vcon2468 VDD     VDD P_18 W=80u  l=1u   m=1
+Mcmp5  Vcon1357 Vcon1357 VDD     VDD P_18 w=80u  l=1u   m=1
+Mcmp6  Vcon2468 Vcon2468 VDD     VDD P_18 W=80u  l=1u   m=1
+
+Mcmp7  Vcon7910 Vcon1357 VDD     VDD P_18 w=80u  l=1u   m=1
+Mcmp8  Vout     Vcon2468 VDD     VDD P_18 w=80u  l=1u   m=1
+
+Mcmp9  Vcon7910 Vcon7910 VSS     VSS N_18 w=3u   l=1u   m=1
+Mcmp10 Vout     Vcon7910 VSS     VSS N_18 w=3u   l=1u   m=1
+
+.ENDS

@@ -1,0 +1,49 @@
+
+
+****Final Project 2 Stage Opamp Circuit****
+
+.include "constant_gm.spi"
+
+.SUBCKT stage2_opamp Vip Vin Vout VDD VSS
+
+Mopamp1 Vcon123 Vbias  VSS     VSS N_18 w=1u   l=1u m=1
+
+Mopamp2 Vcon24  Vin    Vcon123 VSS N_18 w=0.5u l=1u m=1
+Mopamp3 Vcon35  Vip    Vcon123 VSS N_18 w=0.5u l=1u m=1
+
+Mopamp4 Vcon24  Vcon24 VDD     VDD P_18 w=2.5u   l=1u m=1
+Mopamp5 Vcon35  Vcon24 VDD     VDD P_18 w=2.5u   l=1u m=1
+
+Mopamp6 Vcon68  Vbias  VSS     VSS N_18 w=1u   l=10u m=1
+Mopamp7 Vout    Vbias  VSS     VSS N_18 w=1u   l=10u m=1
+
+Mopamp8 Vcon68  Vcon24 VDD     VDD P_18 w=7.3u   l=10u m=1
+Mopamp9 Vout    Vcon35 VDD     VDD P_18 w=7.3u   l=10u m=1
+
+xconstant_gm Vbias VDD VSS / constant_gm
+
+.ENDS
+
+
+.SUBCKT stage2_opamp2 Vip Vin Vout VDD VSS
+
+Mopamp1 Vcon123 Vbias  VSS     VSS N_18 w=0.5u  l=2.5u m=1
+
+Mopamp2 Vcon24  Vin    Vcon123 VSS N_18 W=2.5u  l=5u   m=1
+Mopamp3 Vcon35  Vip    Vcon123 VSS N_18 W=2.5u  l=5u   m=1
+
+Mopamp4 Vcon24  Vcon24 VDD     VDD P_18 W=5u    l=5u   m=1
+Mopamp5 Vcon35  Vcon24 VDD     VDD P_18 w=5u    l=5u   m=1
+
+Mopamp6 Vcon68  Vbias  VSS     VSS N_18 w=0.78u l=10u  m=1
+Mopamp7 Vout    Vbias  VSS     VSS N_18 w=0.78u l=10u  m=1
+
+Mopamp8 Vcon68  Vcon24 VDD     VDD P_18 w=10u   l=10u  m=1
+Mopamp9 Vout    Vcon35 VDD     VDD P_18 w=10u   l=10u  m=1
+
+Rc Vcon35 Vc 2000k
+Cc Vc Vout 1p
+
+xconstant_gm Vbias VDD VSS / constant_gm
+
+.ENDS

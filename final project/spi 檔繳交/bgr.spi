@@ -1,0 +1,61 @@
+
+
+****Final Project Bandgap Reference Circuit****
+
+.SUBCKT bgr VDD VSS Vref
+
+Mbgr1 Vin  Vob VDD VDD P_18 w=96u l=4u m=1
+Mbgr2 Vip  Vob VDD VDD P_18 w=96u l=4u m=1
+Mbgr3 Vref Vob VDD VDD P_18 w=96u l=4u m=1
+
+xstage2_opamp Vip Vin Vob VDD VSS / stage2_opamp
+
+Rbgr1 Vip  temp1 20k
+Rbgr2 Vref temp2 209k
+
+Qbgr1 VSS VSS Vin   VSS PNP_V50X50 m=1
+Qbgr2 VSS VSS temp1 VSS PNP_V50X50 m=10
+Qbgr3 VSS VSS temp2 VSS PNP_V50X50 m=1
+
+.ENDS
+
+
+.SUBCKT stage2_opamp Vip Vin Vout VDD VSS
+
+Mopamp1 Vcon123 Vbias  VSS     VSS N_18 w=0.5u  l=2.5u m=1
+
+Mopamp2 Vcon24  Vin    Vcon123 VSS N_18 W=2.5u  l=5u   m=1
+Mopamp3 Vcon35  Vip    Vcon123 VSS N_18 W=2.5u  l=5u   m=1
+
+Mopamp4 Vcon24  Vcon24 VDD     VDD P_18 W=5u    l=5u   m=1
+Mopamp5 Vcon35  Vcon24 VDD     VDD P_18 w=5u    l=5u   m=1
+
+Mopamp6 Vcon68  Vbias  VSS     VSS N_18 w=0.78u l=10u  m=1
+Mopamp7 Vout    Vbias  VSS     VSS N_18 w=0.78u l=10u  m=1
+
+Mopamp8 Vcon68  Vcon24 VDD     VDD P_18 w=10u   l=10u  m=1
+Mopamp9 Vout    Vcon35 VDD     VDD P_18 w=10u   l=10u  m=1
+
+Rc Vcon35 Vc 2000k
+Cc Vc Vout 1p
+
+xconstant_gm Vbias VDD VSS / constant_gm
+
+.ENDS
+
+
+.SUBCKT constant_gm Vbias VDD VSS
+
+MstartP1 temp1 VSS   VDD   VDD P_18 w=0.25u l=2u m=1
+MstartP2 temp2 VSS   temp1 VDD P_18 w=0.25u l=2u m=1
+MstartN1 temp2 Vbias VSS   VSS N_18 w=10u   l=2u m=1
+MstartN2 temp3 temp2 VSS   VSS N_18 w=1u    l=2u m=1
+
+McongmP1 Vbias temp3 VDD   VDD P_18 w=0.25u l=2u m=1
+McongmP2 temp3 temp3 VDD   VDD P_18 w=0.25u l=2u m=1
+McongmN1 Vbias Vbias VSS   VSS N_18 w=2u    l=2u m=1
+McongmN2 temp3 Vbias temp4 VSS N_18 w=8u    l=2u m=1
+
+Rcongm temp4 VSS 26000
+
+.ENDS
