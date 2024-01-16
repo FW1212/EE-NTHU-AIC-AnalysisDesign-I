@@ -5,3 +5,6 @@
 Notice:
 1. Use Hspice to run simulation
 2. Use Waveview to analysis
+
+Final project:
+1. SSADC with bandgap reference
